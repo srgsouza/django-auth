@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Tunr</title>
+        <link rel="stylesheet" href="{% static 'tunr.css' %}">
+    </head>
+    <body>
+        <h1>Django</h1>
+        <nav>
+            <a href="/songs">Songs</a>
+            <a href="/">Artists</a>
+        </nav>
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                Welcome , {{user.username}}
+                <a href="{% url 'logout' %}" title="">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
